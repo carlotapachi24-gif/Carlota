@@ -135,7 +135,7 @@ const PROJECTS: ProjectItem[] = [
     ],
     visuals: ["Logotipo serif elegante", "Símbolo de árbol estilizado", "Sistema visual completo"],
     color: "text-emerald-400",
-    imageSrc: "/quimeras-del-norte.png",
+    imageSrc: "/quimeras-del-norte.gif",
     imageSeed: "nature"
   },
   {
@@ -823,6 +823,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

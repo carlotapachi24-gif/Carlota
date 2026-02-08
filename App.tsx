@@ -103,6 +103,7 @@ const PROJECTS: ProjectItem[] = [
     ],
     visuals: ["Feed de Instagram cohesivo", "Historias interactivas", "Fotografía gastronómica"],
     color: "text-yellow-400",
+    imageSrc: "/aceites-retamar.png",
     imageSeed: "olive"
   },
   {
@@ -818,5 +819,10 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
 
 

@@ -582,7 +582,7 @@ const Projects = () => {
              />
           </div>
 
-          <div className="space-y-32">
+        <div className="space-y-32">
             {PROJECTS.map((project, index) => (
               <div key={project.id} className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
                 
@@ -591,7 +591,11 @@ const Projects = () => {
                    <Interactive text="VIEW">
                      <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
                         <ParallaxImage 
-                          src={project.imageSrc || `https://picsum.photos/seed/${project.imageSeed || project.id}/1600/1200`} 
+                          src={
+                            project.imageSrc
+                              ? `${import.meta.env.BASE_URL}${project.imageSrc.replace(/^\//, "")}`
+                              : `https://picsum.photos/seed/${project.imageSeed || project.id}/1600/1200`
+                          } 
                           alt={project.title} 
                           className="w-full h-full filter grayscale group-hover:grayscale-0 transition-all duration-700"
                         />

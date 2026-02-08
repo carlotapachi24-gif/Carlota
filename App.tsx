@@ -445,7 +445,7 @@ const Hero = () => {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full flex flex-col justify-center items-center px-4 overflow-hidden">
-      <motion.div style={{ opacity, scale }} className="relative z-10 w-full max-w-[90vw]">
+      <motion.div style={{ opacity, scale }} className="relative z-10 w-full max-w-[94vw] px-[2vw]">
         
         <div className="flex flex-col items-center">
             {/* Massive Typography */}

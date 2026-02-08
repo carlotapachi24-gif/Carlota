@@ -27,6 +27,7 @@ interface ProjectItem {
   concept: string[];
   visuals: string[];
   color: string;
+  imageSrc?: string;
   imageSeed?: string;
 }
 
@@ -86,6 +87,7 @@ const PROJECTS: ProjectItem[] = [
     ],
     visuals: ["Mockups de alta fidelidad", "Sistema de diseño minimalista", "Tipografía editorial"],
     color: "text-rose-300",
+    imageSrc: "/ana-san-juan.png",
     imageSeed: "business" 
   },
   {
@@ -589,7 +591,7 @@ const Projects = () => {
                    <Interactive text="VIEW">
                      <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
                         <ParallaxImage 
-                          src={`https://picsum.photos/seed/${project.imageSeed || project.id}/1600/1200`} 
+                          src={project.imageSrc || `https://picsum.photos/seed/${project.imageSeed || project.id}/1600/1200`} 
                           alt={project.title} 
                           className="w-full h-full filter grayscale group-hover:grayscale-0 transition-all duration-700"
                         />
@@ -812,3 +814,5 @@ function App() {
 }
 
 export default App;
+
+

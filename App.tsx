@@ -184,7 +184,7 @@ const Preloader = () => {
       className="fixed inset-0 z-[10000] bg-neutral-100 flex items-center justify-center pointer-events-none"
     >
       <div className="overflow-hidden flex gap-2 text-black font-display font-bold text-4xl md:text-6xl tracking-tighter">
-        {["CARLOTA", "LÓPEZ", "©2024"].map((text, i) => (
+        {["CARLOTA", "LÓPEZ", "©2026"].map((text, i) => (
           <motion.span
             key={i}
             initial={{ y: "110%" }}

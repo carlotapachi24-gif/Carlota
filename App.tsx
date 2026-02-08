@@ -119,6 +119,7 @@ const PROJECTS: ProjectItem[] = [
     ],
     visuals: ["Mupis y vallas publicitarias", "Cartelería urbana", "Aplicaciones de marca"],
     color: "text-orange-500",
+    imageSrc: "/orestes-comunica.png",
     imageSeed: "urban"
   },
   {
@@ -134,6 +135,7 @@ const PROJECTS: ProjectItem[] = [
     ],
     visuals: ["Logotipo serif elegante", "Símbolo de árbol estilizado", "Sistema visual completo"],
     color: "text-emerald-400",
+    imageSrc: "/quimeras-del-norte.png",
     imageSeed: "nature"
   },
   {
@@ -149,6 +151,7 @@ const PROJECTS: ProjectItem[] = [
     ],
     visuals: ["Logotipo limpio", "Trébol estilizado", "Paleta dorada"],
     color: "text-yellow-400",
+    imageSrc: "/nobreh.png",
     imageSeed: "gold"
   },
   {
@@ -163,6 +166,7 @@ const PROJECTS: ProjectItem[] = [
     ],
     visuals: ["Símbolo solar/energía", "Verde lima/Amarillo", "Tipografía bold"],
     color: "text-lime-400",
+    imageSrc: "/vitamina-3.png",
     imageSeed: "energy"
   }
 ];
@@ -819,6 +823,10 @@ function App() {
 }
 
 export default App;
+
+
+
+
 
 
 

@@ -444,20 +444,46 @@ const Navbar = () => {
           </button>
         </Magnetic>
         {menuOpen && (
-          <div className="absolute right-0 top-[calc(100%+12px)] bg-neutral-900/90 backdrop-blur-md border border-neutral-800 rounded-2xl p-4 min-w-[220px]">
-            <ul className="flex flex-col gap-3">
-              {menuItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="text-xs font-bold uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="fixed inset-0 z-[9999]">
+            <div
+              className="absolute inset-0 bg-neutral-950/80 backdrop-blur-xl"
+              onClick={() => setMenuOpen(false)}
+            ></div>
+            <div className="relative h-full w-full flex flex-col">
+              <div className="px-6 md:px-12 pt-8 flex items-center justify-between text-white">
+                <span className="text-sm font-bold tracking-[0.2em] uppercase">Carlota López</span>
+                <button
+                  type="button"
+                  className="flex items-center gap-4 text-sm font-bold uppercase tracking-widest"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Close
+                  <span className="relative w-5 h-5">
+                    <span className="absolute top-1/2 left-0 w-full h-[2px] bg-white -translate-y-1/2 rotate-45"></span>
+                    <span className="absolute top-1/2 left-0 w-full h-[2px] bg-white -translate-y-1/2 -rotate-45"></span>
+                  </span>
+                </button>
+              </div>
+
+              <div className="flex-1 flex items-center justify-center">
+                <ul className="text-center">
+                  {menuItems.map((item, i) => (
+                    <li key={item.href} className="flex items-center justify-center gap-6">
+                      <span className="text-xs md:text-sm text-neutral-400 w-10 text-right">
+                        {String(i + 1).padStart(2, "0")}.
+                      </span>
+                      <a
+                        href={item.href}
+                        className="font-display text-5xl md:text-7xl lg:text-8xl text-white hover:opacity-80 transition-opacity leading-[1.05]"
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         )}
       </div>

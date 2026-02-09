@@ -449,8 +449,8 @@ const Hero = () => {
         
         <div className="flex flex-col items-center">
             {/* Massive Typography */}
-            <h1 className="font-display font-black text-[15vw] leading-[0.8] tracking-tighter text-white mix-blend-normal text-center cursor-default">
-              <span className="block overflow-hidden">
+            <h1 className="font-display font-black text-[15vw] leading-[0.85] tracking-tighter text-white mix-blend-normal text-center cursor-default">
+              <span className="block overflow-hidden px-[0.04em] py-[0.02em]">
                  <motion.span 
                    initial={{ y: "100%" }} 
                    animate={{ y: 0 }} 
@@ -460,7 +460,7 @@ const Hero = () => {
                    CARLOTA
                  </motion.span>
               </span>
-              <span className="block overflow-hidden ml-[10vw]">
+              <span className="block overflow-hidden ml-[10vw] px-[0.04em] py-[0.02em]">
                  <motion.span 
                    initial={{ y: "100%" }} 
                    animate={{ y: 0 }} 
@@ -751,11 +751,11 @@ const Footer = () => {
       <div className="max-w-screen-2xl mx-auto relative z-10">
         <div className="flex flex-col items-start mb-32">
           <MaskTextReveal 
-            className="font-display font-black text-[11vw] leading-[0.8] text-white tracking-tighter uppercase mb-8"
+            className="font-display font-black text-[11vw] leading-[0.85] text-white tracking-tighter uppercase mb-8"
             text="¿Trabajamos"
           />
           <MaskTextReveal 
-            className="font-display font-black text-[11vw] leading-[0.8] text-white tracking-tighter uppercase" 
+            className="font-display font-black text-[11vw] leading-[0.85] text-white tracking-tighter uppercase" 
             delay={0.2}
             text="Juntos?"
           />

@@ -460,7 +460,7 @@ const Hero = () => {
                    CARLOTA
                  </motion.span>
               </span>
-              <span className="block overflow-hidden ml-[10vw] px-[0.04em] py-[0.02em]">
+              <span className="block overflow-hidden ml-[10vw] -mt-[2.2vw] px-[0.04em] py-[0.02em] relative z-10">
                  <motion.span 
                    initial={{ y: "100%" }} 
                    animate={{ y: 0 }} 

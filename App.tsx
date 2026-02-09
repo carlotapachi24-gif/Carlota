@@ -445,7 +445,7 @@ const Navbar = ({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: Rea
         {menuOpen && (
           <div className="fixed inset-0 z-[9999]">
             <div
-              className="absolute inset-0 bg-neutral-950/70 backdrop-blur-2xl backdrop-saturate-150"
+              className="absolute inset-0 bg-neutral-950/85 backdrop-blur-3xl backdrop-saturate-200"
               onClick={() => setMenuOpen(false)}
             ></div>
             <div className="relative h-full w-full flex flex-col">
@@ -876,7 +876,7 @@ function App() {
           <span className="absolute -bottom-[10vh] -right-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
         </div>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <div className={menuOpen ? "blur-[6px] brightness-75 transition-all duration-300" : "transition-all duration-300"}>
+        <div className={menuOpen ? "blur-[16px] brightness-50 saturate-50 transition-all duration-300" : "transition-all duration-300"}>
           <Hero />
           <main>
             <Profile />

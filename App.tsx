@@ -750,23 +750,27 @@ const Formation = () => {
     <section id="formacion" className="py-24 border-t border-neutral-900 px-6 md:px-12 bg-neutral-950">
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 min-w-0">
          <SectionLabel text="Formación" />
-         <div className="col-span-12 md:col-span-10 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 min-w-0">
+         <div className="col-span-12 md:col-span-10 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 min-w-0 w-full">
             <FadeUp>
               <div className="space-y-2 min-w-0">
-                <h3 className="text-2xl md:text-3xl text-white font-display leading-tight break-words">Grado en Publicidad y RR.PP.</h3>
-                <p className="text-neutral-500 text-sm font-mono uppercase tracking-widest">Universidad de Vigo | 2020-2024</p>
+                <h3 className="text-xl sm:text-2xl md:text-3xl text-white font-display leading-tight break-words max-w-[22ch]">
+                  Grado en Publicidad y RR.PP.
+                </h3>
+                <p className="text-neutral-500 text-[11px] sm:text-sm font-mono uppercase tracking-[0.12em] sm:tracking-widest">
+                  Universidad de Vigo | 2020-2024
+                </p>
               </div>
             </FadeUp>
             
             <FadeUp delay={0.2}>
-               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+               <div className="grid !grid-cols-1 md:!grid-cols-3 gap-3 sm:gap-4 w-full">
                  {[
                    { lang: "Español", lvl: "Nativo" },
                    { lang: "Gallego", lvl: "Nativo" },
                    { lang: "Inglés", lvl: "Profesional" }
                  ].map((item, i) => (
                    <Interactive key={i} text={item.lvl}>
-                    <div className="border border-neutral-800 p-3 md:p-4 text-center hover:bg-white hover:text-black transition-colors duration-300 w-full min-w-0">
+                    <div className="border border-neutral-800 p-3 md:p-4 text-center hover:bg-white hover:text-black transition-colors duration-300 w-full min-w-0 max-w-full">
                       <div className="font-bold text-base md:text-lg mb-1 break-words">{item.lang}</div>
                       <div className="text-[10px] uppercase tracking-widest opacity-60">{item.lvl}</div>
                     </div>

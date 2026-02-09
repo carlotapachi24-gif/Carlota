@@ -810,7 +810,11 @@ function App() {
         <div className="pointer-events-none absolute inset-0 z-0">
           <span className="absolute top-[8vh] -left-[8vw] w-[34vw] h-[34vw] rounded-full bg-fuchsia-500/10 blur-[80px]"></span>
           <span className="absolute top-[28vh] -right-[10vw] w-[30vw] h-[30vw] rounded-full bg-fuchsia-500/10 blur-[85px]"></span>
-          <span className="absolute bottom-[18vh] -left-[12vw] w-[28vw] h-[28vw] rounded-full bg-fuchsia-500/10 blur-[90px]"></span>
+          <span className="absolute top-[85vh] -left-[12vw] w-[28vw] h-[28vw] rounded-full bg-fuchsia-500/10 blur-[90px]"></span>
+          <span className="absolute top-[140vh] -right-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
+          <span className="absolute top-[200vh] -left-[10vw] w-[30vw] h-[30vw] rounded-full bg-fuchsia-500/10 blur-[90px]"></span>
+          <span className="absolute top-[260vh] -right-[12vw] w-[34vw] h-[34vw] rounded-full bg-fuchsia-500/10 blur-[100px]"></span>
+          <span className="absolute top-[320vh] -left-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
           <span className="absolute -bottom-[10vh] -right-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
         </div>
         <Navbar />

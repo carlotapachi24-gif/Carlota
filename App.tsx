@@ -398,6 +398,15 @@ const SectionLabel = ({ text }: { text: string }) => (
 // --- Structural Components ---
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuItems = [
+    { label: "Perfil", href: "#perfil" },
+    { label: "Experiencia", href: "#experiencia" },
+    { label: "Proyectos", href: "#proyectos" },
+    { label: "Formación", href: "#formacion" },
+    { label: "Metodología", href: "#metodologia" }
+  ];
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
@@ -410,7 +419,7 @@ const Navbar = () => {
             <span className="text-sm font-bold tracking-[0.2em] uppercase">Carlota López</span>
          </Interactive>
       </div>
-      <div className="flex items-center gap-8 pointer-events-auto">
+      <div className="flex items-center gap-8 pointer-events-auto relative">
         <a href="mailto:carlotalopecarracedo@gmail.com" className="hidden md:block">
            <Interactive text="MAIL">
               <span className="text-xs font-bold uppercase tracking-widest hover:text-neutral-300 transition-colors">
@@ -419,15 +428,38 @@ const Navbar = () => {
            </Interactive>
         </a>
         <Magnetic>
-          <div className="w-10 h-10 flex flex-col justify-center gap-1.5 group cursor-pointer">
-             <Interactive text="MENU">
-               <div className="flex flex-col gap-1.5 items-end">
+          <button
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+            className="w-10 h-10 flex flex-col justify-center gap-1.5 group cursor-pointer"
+          >
+            <Interactive text="MENU">
+              <div className="flex flex-col gap-1.5 items-end">
                 <span className="w-full h-[2px] bg-white group-hover:w-1/2 transition-all duration-300"></span>
                 <span className="w-2/3 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
-               </div>
-             </Interactive>
-          </div>
+              </div>
+            </Interactive>
+          </button>
         </Magnetic>
+        {menuOpen && (
+          <div className="absolute right-0 top-[calc(100%+12px)] bg-neutral-900/90 backdrop-blur-md border border-neutral-800 rounded-2xl p-4 min-w-[220px]">
+            <ul className="flex flex-col gap-3">
+              {menuItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="text-xs font-bold uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </motion.nav>
   );
@@ -503,7 +535,7 @@ const Hero = () => {
 
 const Profile = () => {
   return (
-    <section className="py-24 px-6 md:px-12 relative z-10 bg-neutral-950">
+    <section id="perfil" className="py-24 px-6 md:px-12 relative z-10 bg-neutral-950">
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
         <SectionLabel text="Perfil" />
         <div className="col-span-12 md:col-span-10">
@@ -532,7 +564,7 @@ const Profile = () => {
 
 const Experience = () => {
   return (
-    <section className="py-24 px-6 md:px-12 relative z-10 bg-neutral-950">
+    <section id="experiencia" className="py-24 px-6 md:px-12 relative z-10 bg-neutral-950">
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
         <SectionLabel text="Experiencia" />
         <div className="col-span-12 md:col-span-10">
@@ -575,7 +607,7 @@ const Experience = () => {
 
 const Projects = () => {
   return (
-    <section className="py-24 px-6 md:px-12 bg-neutral-950 border-t border-neutral-900">
+    <section id="proyectos" className="py-24 px-6 md:px-12 bg-neutral-950 border-t border-neutral-900">
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
         <SectionLabel text="Proyectos" />
         
@@ -678,7 +710,7 @@ const InfiniteMarquee = () => {
 
 const Formation = () => {
   return (
-    <section className="py-24 border-t border-neutral-900 px-6 md:px-12 bg-neutral-950">
+    <section id="formacion" className="py-24 border-t border-neutral-900 px-6 md:px-12 bg-neutral-950">
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16">
          <SectionLabel text="Formación" />
          <div className="col-span-12 md:col-span-10 grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -713,7 +745,7 @@ const Formation = () => {
 
 const Methodology = () => {
   return (
-    <section className="py-32 px-6 md:px-12 bg-neutral-900/20 border-t border-neutral-900">
+    <section id="metodologia" className="py-32 px-6 md:px-12 bg-neutral-900/20 border-t border-neutral-900">
       <div className="max-w-screen-2xl mx-auto">
         <div className="mb-16">
           <SectionLabel text="Metodología" />

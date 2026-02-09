@@ -806,13 +806,12 @@ function App() {
       <div className="bg-neutral-950 min-h-screen text-neutral-200 selection:bg-white selection:text-black overflow-x-hidden cursor-none relative">
         <Preloader />
         <CustomCursor />
-        {/* Subtle neon accents */}
+        {/* Soft neon edge glows */}
         <div className="pointer-events-none absolute inset-0 z-0">
-          <span className="absolute top-[12vh] left-[8vw] w-[10px] h-[10px] rounded-full bg-fuchsia-400/60 blur-[1px]"></span>
-          <span className="absolute top-[38vh] right-[10vw] w-[14px] h-[14px] rounded-full bg-fuchsia-400/50 blur-[2px]"></span>
-          <span className="absolute top-[72vh] left-[16vw] w-[8px] h-[8px] rounded-full bg-fuchsia-400/50 blur-[1px]"></span>
-          <span className="absolute top-[52vh] left-[58vw] w-[220px] h-[220px] rounded-full bg-fuchsia-500/10 blur-[60px]"></span>
-          <span className="absolute -top-[6vh] right-[22vw] w-[180px] h-[180px] rounded-full bg-fuchsia-500/10 blur-[55px]"></span>
+          <span className="absolute top-[8vh] -left-[8vw] w-[34vw] h-[34vw] rounded-full bg-fuchsia-500/10 blur-[80px]"></span>
+          <span className="absolute top-[28vh] -right-[10vw] w-[30vw] h-[30vw] rounded-full bg-fuchsia-500/10 blur-[85px]"></span>
+          <span className="absolute bottom-[18vh] -left-[12vw] w-[28vw] h-[28vw] rounded-full bg-fuchsia-500/10 blur-[90px]"></span>
+          <span className="absolute -bottom-[10vh] -right-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
         </div>
         <Navbar />
         <Hero />

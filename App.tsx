@@ -397,8 +397,7 @@ const SectionLabel = ({ text }: { text: string }) => (
 
 // --- Structural Components ---
 
-const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+const Navbar = ({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const menuItems = [
     { label: "Perfil", href: "#perfil" },
     { label: "Experiencia", href: "#experiencia" },
@@ -446,7 +445,7 @@ const Navbar = () => {
         {menuOpen && (
           <div className="fixed inset-0 z-[9999]">
             <div
-              className="absolute inset-0 bg-neutral-950/80 backdrop-blur-xl"
+              className="absolute inset-0 bg-neutral-950/70 backdrop-blur-2xl backdrop-saturate-150"
               onClick={() => setMenuOpen(false)}
             ></div>
             <div className="relative h-full w-full flex flex-col">
@@ -858,6 +857,7 @@ const Footer = () => {
 function App() {
   const [cursorText, setCursorText] = useState("");
   const [cursorVariant, setCursorVariant] = useState("default");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <CursorContext.Provider value={{ cursorText, setCursorText, setCursorVariant, cursorVariant }}>
@@ -875,17 +875,19 @@ function App() {
           <span className="absolute top-[320vh] -left-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
           <span className="absolute -bottom-[10vh] -right-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
         </div>
-        <Navbar />
-        <Hero />
-        <main>
-          <Profile />
-          <Experience />
-          <InfiniteMarquee />
-          <Projects />
-          <Formation />
-          <Methodology />
-        </main>
-        <Footer />
+        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <div className={menuOpen ? "blur-[6px] brightness-75 transition-all duration-300" : "transition-all duration-300"}>
+          <Hero />
+          <main>
+            <Profile />
+            <Experience />
+            <InfiniteMarquee />
+            <Projects />
+            <Formation />
+            <Methodology />
+          </main>
+          <Footer />
+        </div>
       </div>
     </CursorContext.Provider>
   );

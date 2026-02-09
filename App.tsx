@@ -188,13 +188,14 @@ const Preloader = () => {
       transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 1.5 }}
       className="fixed inset-0 z-[10000] bg-neutral-100 flex items-center justify-center pointer-events-none"
     >
-      <div className="overflow-hidden flex gap-2 text-black font-display font-bold text-4xl md:text-6xl tracking-tighter">
+      <div className="overflow-hidden flex flex-col items-center gap-1 text-black font-display font-bold text-3xl md:text-6xl tracking-tighter md:flex-row md:gap-2">
         {["CARLOTA", "LÓPEZ", "©2026"].map((text, i) => (
           <motion.span
             key={i}
             initial={{ y: "110%" }}
             animate={{ y: 0 }}
             transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.2 + i * 0.1 }}
+            className="block"
           >
             {text}
           </motion.span>
@@ -210,15 +211,26 @@ const CustomCursor = () => {
   const mouseY = useMotionValue(-100);
   
   const [variant, setLocalVariant] = useState("default");
+  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
 
   useEffect(() => {
+    const media = window.matchMedia("(pointer: coarse)");
+    const update = () => setIsCoarsePointer(media.matches);
+    update();
+    media.addEventListener("change", update);
+
     const moveCursor = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
     window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
+    return () => {
+      media.removeEventListener("change", update);
+      window.removeEventListener("mousemove", moveCursor);
+    };
   }, [mouseX, mouseY]);
+
+  if (isCoarsePointer) return null;
 
   return (
     <CursorContext.Consumer>
@@ -861,7 +873,7 @@ function App() {
 
   return (
     <CursorContext.Provider value={{ cursorText, setCursorText, setCursorVariant, cursorVariant }}>
-      <div className="bg-neutral-950 min-h-screen text-neutral-200 selection:bg-white selection:text-black overflow-x-hidden cursor-none relative">
+      <div className="bg-neutral-950 min-h-screen text-neutral-200 selection:bg-white selection:text-black overflow-x-hidden md:cursor-none relative">
         <Preloader />
         <CustomCursor />
         {/* Soft neon edge glows */}

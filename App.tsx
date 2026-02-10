@@ -29,6 +29,7 @@ interface ProjectItem {
   color: string;
   imageSrc?: string;
   imageSeed?: string;
+  link?: string;
 }
 
 // --- Data ---
@@ -88,7 +89,8 @@ const PROJECTS: ProjectItem[] = [
     visuals: ["Mockups de alta fidelidad", "Sistema de diseño minimalista", "Tipografía editorial"],
     color: "text-rose-300",
     imageSrc: "/ana-san-juan.png",
-    imageSeed: "business" 
+    imageSeed: "business",
+    link: "https://ana-sanjuan.com/"
   },
   {
     id: "02",
@@ -669,23 +671,51 @@ const Projects = () => {
                 {/* Image Section */}
                 <div className={`col-span-12 md:col-span-7 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
                    <Interactive text="VIEW">
-                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900 group">
-                        <ParallaxImage 
-                          src={
-                            project.imageSrc
-                              ? `${import.meta.env.BASE_URL}${project.imageSrc.replace(/^\//, "")}`
-                              : `https://picsum.photos/seed/${project.imageSeed || project.id}/1600/1200`
-                          } 
-                          alt={project.title} 
-                          className="w-full h-full filter grayscale group-hover:grayscale-0 transition-all duration-700"
-                        />
-                        <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                          <div className="bg-black text-white p-3 rounded-full border border-white/5 shadow-lg transform transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-12 h-12 cursor-pointer">
-                            <ArrowUpRight className="w-6 h-6" />
+                     {project.link ? (
+                       <a
+                         href={project.link}
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         aria-label={`Abrir ${project.title} en nueva pestaña`}
+                         className="block"
+                       >
+                         <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900 group">
+                            <ParallaxImage 
+                              src={
+                                project.imageSrc
+                                  ? `${import.meta.env.BASE_URL}${project.imageSrc.replace(/^\//, "")}`
+                                  : `https://picsum.photos/seed/${project.imageSeed || project.id}/1600/1200`
+                              } 
+                              alt={project.title} 
+                              className="w-full h-full filter grayscale group-hover:grayscale-0 transition-all duration-700"
+                            />
+                            <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                              <div className="bg-black text-white p-3 rounded-full border border-white/5 shadow-lg transform transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-12 h-12">
+                                <ArrowUpRight className="w-6 h-6" />
+                              </div>
+                            </div>
+                            {/* sheen overlay removed per user request */}
+                         </div>
+                       </a>
+                     ) : (
+                       <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900 group">
+                          <ParallaxImage 
+                            src={
+                              project.imageSrc
+                                ? `${import.meta.env.BASE_URL}${project.imageSrc.replace(/^\//, "")}`
+                                : `https://picsum.photos/seed/${project.imageSeed || project.id}/1600/1200`
+                            } 
+                            alt={project.title} 
+                            className="w-full h-full filter grayscale group-hover:grayscale-0 transition-all duration-700"
+                          />
+                          <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <div className="bg-black text-white p-3 rounded-full border border-white/5 shadow-lg transform transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-12 h-12 cursor-pointer">
+                              <ArrowUpRight className="w-6 h-6" />
+                            </div>
                           </div>
-                        </div>
-                        {/* sheen overlay removed per user request */}
-                     </div>
+                          {/* sheen overlay removed per user request */}
+                       </div>
+                     )}
                    </Interactive>
                 </div>
 

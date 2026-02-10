@@ -877,7 +877,7 @@ function App() {
 
   return (
     <CursorContext.Provider value={{ cursorText, setCursorText, setCursorVariant, cursorVariant }}>
-      <div className="bg-neutral-950 min-h-screen text-neutral-200 selection:bg-white selection:text-black overflow-x-hidden md:cursor-none relative">
+      <div className="bg-neutral-950 min-h-screen text-neutral-200 selection:bg-white selection:text-black overflow-x-hidden md:cursor-none relative" style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}>
         <Preloader />
         <CustomCursor />
         {/* Soft neon edge glows */}
@@ -892,7 +892,7 @@ function App() {
           <span className="absolute -bottom-[10vh] -right-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
         </div>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <div className={menuOpen ? "blur-[16px] brightness-50 saturate-50 transition-all duration-300" : "transition-all duration-300"}>
+        <div className={menuOpen ? "blur-[16px] brightness-50 saturate-50 transition-all duration-300" : "transition-all duration-300"} style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}>
           <Hero />
           <main>
             <Profile />

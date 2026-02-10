@@ -513,7 +513,11 @@ const Hero = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full flex flex-col justify-center items-center px-4 overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative h-screen w-full flex flex-col justify-center items-center px-4 overflow-hidden"
+      style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+    >
       <motion.div style={{ opacity, scale }} className="relative z-10 w-full max-w-[94vw] px-[2vw]">
         
         <div className="flex flex-col items-center">
@@ -820,7 +824,10 @@ const Methodology = () => {
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-neutral-950 border-t border-neutral-900 pt-24 pb-12 px-6 md:px-12 relative overflow-hidden">
+    <footer
+      className="w-full bg-neutral-950 border-t border-neutral-900 pt-24 pb-12 px-6 md:px-12 relative overflow-hidden"
+      style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+    >
       <div className="max-w-screen-2xl mx-auto relative z-10">
         <div className="flex flex-col items-start mb-32">
           <MaskTextReveal 
@@ -874,6 +881,22 @@ function App() {
   const [cursorText, setCursorText] = useState("");
   const [cursorVariant, setCursorVariant] = useState("default");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    try {
+      // encourage vertical panning for touch devices
+      document.documentElement.style.touchAction = 'pan-y';
+      // @ts-ignore
+      document.documentElement.style.WebkitOverflowScrolling = 'touch';
+    } catch (e) {}
+
+    const noop = () => {};
+    window.addEventListener('touchmove', noop, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchmove', noop as EventListenerOrEventListenerObject);
+    };
+  }, []);
 
   return (
     <CursorContext.Provider value={{ cursorText, setCursorText, setCursorVariant, cursorVariant }}>

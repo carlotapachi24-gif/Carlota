@@ -516,7 +516,7 @@ const Hero = () => {
     <section
       ref={containerRef}
       className="relative h-screen w-full flex flex-col justify-center items-center px-4 overflow-hidden"
-      style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+      style={{ touchAction: 'auto', WebkitOverflowScrolling: 'touch' }}
     >
       <motion.div style={{ opacity, scale }} className="relative z-10 w-full max-w-[94vw] px-[2vw]">
         
@@ -730,14 +730,14 @@ const InfiniteMarquee = () => {
   return (
     <section className="py-12 bg-neutral-950 border-t border-neutral-900 overflow-hidden">
        <div className="relative flex w-full overflow-hidden">
-         <div className="animate-marquee whitespace-nowrap flex items-center gap-16 py-8">
+         <div className="animate-marquee whitespace-nowrap flex items-center gap-16 py-8" style={{ pointerEvents: 'none' }}>
             {[...ALL_SKILLS, ...ALL_SKILLS].map((skill, i) => (
               <span key={i} className="text-4xl md:text-6xl font-display font-bold text-transparent stroke-text hover:text-white transition-colors duration-300 select-none cursor-default" style={{ WebkitTextStroke: '1px #333' }}>
                 {skill}
               </span>
             ))}
          </div>
-         <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-16 py-8" style={{ left: '100%' }}>
+         <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-16 py-8" style={{ left: '100%', pointerEvents: 'none' }}>
             {[...ALL_SKILLS, ...ALL_SKILLS].map((skill, i) => (
               <span key={i} className="text-4xl md:text-6xl font-display font-bold text-transparent stroke-text hover:text-white transition-colors duration-300 select-none cursor-default" style={{ WebkitTextStroke: '1px #333' }}>
                 {skill}
@@ -826,7 +826,7 @@ const Footer = () => {
   return (
     <footer
       className="w-full bg-neutral-950 border-t border-neutral-900 pt-24 pb-12 px-6 md:px-12 relative overflow-hidden"
-      style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+      style={{ touchAction: 'auto', WebkitOverflowScrolling: 'touch' }}
     >
       <div className="max-w-screen-2xl mx-auto relative z-10">
         <div className="flex flex-col items-start mb-32">
@@ -884,16 +884,22 @@ function App() {
 
   useEffect(() => {
     try {
-      // encourage vertical panning for touch devices
-      document.documentElement.style.touchAction = 'pan-y';
+      // allow default touch behaviors; avoid restricting gestures
+      document.documentElement.style.touchAction = 'auto';
       // @ts-ignore
       document.documentElement.style.WebkitOverflowScrolling = 'touch';
+      document.body.style.touchAction = 'auto';
+      // @ts-ignore
+      document.body.style.WebkitOverflowScrolling = 'touch';
     } catch (e) {}
 
     const noop = () => {};
+    // passive listeners hint browsers not to block scrolling
+    window.addEventListener('touchstart', noop, { passive: true });
     window.addEventListener('touchmove', noop, { passive: true });
 
     return () => {
+      window.removeEventListener('touchstart', noop as EventListenerOrEventListenerObject);
       window.removeEventListener('touchmove', noop as EventListenerOrEventListenerObject);
     };
   }, []);

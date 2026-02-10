@@ -679,9 +679,9 @@ const Projects = () => {
                           alt={project.title} 
                           className="w-full h-full filter grayscale group-hover:grayscale-0 transition-all duration-700"
                         />
-                        <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-                          <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full">
-                            <ArrowUpRight className="text-white w-6 h-6" />
+                        <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                          <div className="bg-black text-white p-3 rounded-full border border-white/5 shadow-lg transform transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-12 h-12 cursor-pointer">
+                            <ArrowUpRight className="w-6 h-6" />
                           </div>
                         </div>
                         {/* sheen overlay removed per user request */}

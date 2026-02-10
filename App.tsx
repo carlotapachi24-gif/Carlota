@@ -387,7 +387,7 @@ const ParallaxImage = ({ src, alt, className }: { src: string, alt: string, clas
   return (
     <div ref={ref} className={`overflow-hidden relative ${className}`}>
       <motion.img 
-        style={{ y, scale }}
+        style={{ y, scale, willChange: 'transform' }}
         src={src} 
         alt={alt}
         className="w-full h-full object-cover"
@@ -571,22 +571,7 @@ const Hero = () => {
       {/* Background visual element */}
       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent pointer-events-none z-0" />
 
-      {/* Neon purple glows */}
-      <motion.div
-        aria-hidden
-        className="absolute -top-16 -left-20 w-[36vw] h-[36vw] rounded-full mix-blend-screen pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 30% 30%, rgba(199, 102, 255, 0.18), rgba(124, 58, 237, 0.06))', filter: 'blur(80px)' }}
-        animate={{ scale: [1, 1.06, 1], opacity: [0.7, 0.95, 0.7], x: [0, 12, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      <motion.div
-        aria-hidden
-        className="absolute -bottom-28 -right-24 w-[28vw] h-[28vw] rounded-full mix-blend-screen pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 70% 70%, rgba(199, 102, 255, 0.14), rgba(124, 58, 237, 0.04))', filter: 'blur(90px)' }}
-        animate={{ scale: [1, 0.96, 1], opacity: [0.6, 0.9, 0.6], x: [0, -10, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {/* Neon glows removed (user requested) */}
     </section>
   );
 };
@@ -699,8 +684,7 @@ const Projects = () => {
                             <ArrowUpRight className="text-white w-6 h-6" />
                           </div>
                         </div>
-                        {/* Purple sheen overlay on hover */}
-                        <div className="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100" style={{ background: 'linear-gradient(135deg, rgba(199,102,255,0.06), rgba(124,58,237,0.03))', mixBlendMode: 'screen' }} />
+                        {/* sheen overlay removed per user request */}
                      </div>
                    </Interactive>
                 </div>
@@ -893,14 +877,7 @@ const Footer = () => {
       {/* Decorative gradient blob */}
       <div className="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[100vw] h-[50vh] bg-white opacity-[0.03] blur-[100px] rounded-full pointer-events-none"></div>
 
-      {/* Footer neon accent */}
-      <motion.div
-        aria-hidden
-        className="absolute -bottom-40 left-1/4 w-[40vw] h-[24vw] rounded-full mix-blend-screen pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 40% 60%, rgba(199,102,255,0.12), rgba(124,58,237,0.03))', filter: 'blur(80px)' }}
-        animate={{ scale: [1, 1.03, 1], opacity: [0.6, 0.95, 0.6] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {/* Footer neon accent removed per user request */}
     </footer>
   );
 };
@@ -949,7 +926,7 @@ function App() {
           <span className="absolute -bottom-[10vh] -right-[14vw] w-[32vw] h-[32vw] rounded-full bg-fuchsia-500/10 blur-[95px]"></span>
         </div>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <div className={menuOpen ? "blur-[16px] brightness-50 saturate-50 transition-all duration-300" : "transition-all duration-300"} style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}>
+          <div className={menuOpen ? "blur-[16px] brightness-50 saturate-50 transition-all duration-300" : "transition-all duration-300"}>
           <Hero />
           <main>
             <Profile />

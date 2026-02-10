@@ -570,6 +570,23 @@ const Hero = () => {
       
       {/* Background visual element */}
       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent pointer-events-none z-0" />
+
+      {/* Neon purple glows */}
+      <motion.div
+        aria-hidden
+        className="absolute -top-16 -left-20 w-[36vw] h-[36vw] rounded-full mix-blend-screen pointer-events-none"
+        style={{ background: 'radial-gradient(circle at 30% 30%, rgba(199, 102, 255, 0.18), rgba(124, 58, 237, 0.06))', filter: 'blur(80px)' }}
+        animate={{ scale: [1, 1.06, 1], opacity: [0.7, 0.95, 0.7], x: [0, 12, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <motion.div
+        aria-hidden
+        className="absolute -bottom-28 -right-24 w-[28vw] h-[28vw] rounded-full mix-blend-screen pointer-events-none"
+        style={{ background: 'radial-gradient(circle at 70% 70%, rgba(199, 102, 255, 0.14), rgba(124, 58, 237, 0.04))', filter: 'blur(90px)' }}
+        animate={{ scale: [1, 0.96, 1], opacity: [0.6, 0.9, 0.6], x: [0, -10, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+      />
     </section>
   );
 };
@@ -667,7 +684,7 @@ const Projects = () => {
                 {/* Image Section */}
                 <div className={`col-span-12 md:col-span-7 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
                    <Interactive text="VIEW">
-                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
+                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900 group">
                         <ParallaxImage 
                           src={
                             project.imageSrc
@@ -682,6 +699,8 @@ const Projects = () => {
                             <ArrowUpRight className="text-white w-6 h-6" />
                           </div>
                         </div>
+                        {/* Purple sheen overlay on hover */}
+                        <div className="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100" style={{ background: 'linear-gradient(135deg, rgba(199,102,255,0.06), rgba(124,58,237,0.03))', mixBlendMode: 'screen' }} />
                      </div>
                    </Interactive>
                 </div>
@@ -873,6 +892,15 @@ const Footer = () => {
       
       {/* Decorative gradient blob */}
       <div className="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[100vw] h-[50vh] bg-white opacity-[0.03] blur-[100px] rounded-full pointer-events-none"></div>
+
+      {/* Footer neon accent */}
+      <motion.div
+        aria-hidden
+        className="absolute -bottom-40 left-1/4 w-[40vw] h-[24vw] rounded-full mix-blend-screen pointer-events-none"
+        style={{ background: 'radial-gradient(circle at 40% 60%, rgba(199,102,255,0.12), rgba(124,58,237,0.03))', filter: 'blur(80px)' }}
+        animate={{ scale: [1, 1.03, 1], opacity: [0.6, 0.95, 0.6] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
     </footer>
   );
 };
